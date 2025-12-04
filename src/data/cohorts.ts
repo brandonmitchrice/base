@@ -1,33 +1,26 @@
-export type CohortStatus = "upcoming" | "active" | "completed";
-
-export interface Cohort {
-  title: string;
-  description: string;
-  week: number;
-  students: number;
-  status: CohortStatus;
-}
-
-export const cohorts: Cohort[] = [
+export const cohorts = [
   {
-    title: "Base Mini App",
-    description: "Build your first mini app on Base network.",
+    id: '1',
+    title: 'Web3 Basics',
+    description: 'Learn blockchain fundamentals',
     week: 1,
+    status: 'active',
     students: 24,
-    status: "active",
   },
   {
-    title: "OnchainKit Masters",
-    description: "Master Web3 integration patterns.",
-    week: 3,
+    id: '2',
+    title: 'Smart Contracts 101',
+    description: 'Build your first contract',
+    week: 4,
+    status: 'active',
     students: 18,
-    status: "upcoming",
   },
   {
-    title: "Advanced Farcaster",
-    description: "Build social apps on Farcaster.",
-    week: 2,
-    students: 32,
-    status: "active",
+    id: '3',
+    title: 'DApp Development',
+    description: 'Full-stack dapp building',
+    week: 8,
+    status: 'active',
+    students: 12,
   },
-];
+]
