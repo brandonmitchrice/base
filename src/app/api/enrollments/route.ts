@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 import { NextRequest, NextResponse } from 'next/server'
+import { verifyMessage } from 'viem'
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -8,7 +9,11 @@ const supabase = createClient(
 
 export async function POST(request: NextRequest) {
   try {
-    const { studentId, cohortId } = await request.json()
+    const { studentId, cohortId, message, signature } = await request.json()
+    const isValid = await verifyMessage({ address: studentId as `0x${string}`, message, signature })
+    if (!isValid) {
+      return NextResponse.json({ success: false, error: 'Invalid signature' }, { status: 401 })
+    }
 
     const { data, error } = await supabase
       .from('enrollments')

@@ -1,8 +1,8 @@
-import type { NextConfig } from "next";
+const nextConfig = {
+  experimental: {},
+  turbopack: {
+    root: __dirname,
+  },
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
-};
-
-export default nextConfig;
+export default nextConfig
